@@ -29,6 +29,12 @@ nix run github:DariusCorvus/surrealdb-nix#v2-6-4
 nix run github:DariusCorvus/surrealdb-nix#v1-0-0
 ```
 
+### Install to profile
+
+```sh
+nix profile install github:DariusCorvus/surrealdb-nix#v2-6-4
+```
+
 ### Temporary shell
 
 ```sh
