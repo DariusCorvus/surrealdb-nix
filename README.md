@@ -69,6 +69,19 @@ devShells.default = pkgs.mkShell {
 };
 ```
 
+## Experimental features (3.x)
+
+SurrealDB 3.x ships some features (e.g. `DEFINE BUCKET` for file storage) gated behind an experimental capability. The `--allow-experimental` CLI flag is hidden from `surreal --help` upstream, so prefer the env var — and **set it on both the server and the `surreal sql` client**, since the client parses queries locally before sending them:
+
+```sh
+export SURREAL_CAPS_ALLOW_EXPERIMENTAL=files
+surreal start --user root --pass root memory
+# in another shell — same env var required
+surreal sql --user root --pass root --ns test --db test --pretty
+```
+
+Without it on the client side you'll get `Unexpected token BUCKET, expected the experimental files feature to be enabled` even though the server accepts it.
+
 ## Version naming
 
 Versions are exposed as package attributes with dots replaced by dashes:
